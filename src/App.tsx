@@ -3,6 +3,8 @@ import { AuthProvider } from './contexts/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import Layout from './components/Layout'
 import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import DashboardPage from './pages/DashboardPage'
 import ApplicationsPage from './pages/ApplicationsPage'
 import UsersPage from './pages/UsersPage'
@@ -17,6 +19,8 @@ function App() {
     <AuthProvider>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/logout" element={<LogoutPage />} />
         <Route path="/saml/callback" element={<SamlCallbackPage />} />
         <Route path="/oidc/callback" element={<OidcCallbackPage />} />
