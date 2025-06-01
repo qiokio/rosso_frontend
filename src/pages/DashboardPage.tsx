@@ -1,53 +1,68 @@
-import { useState, useEffect } from 'react';
-
-interface StatsItem {
-  name: string;
-  stat: string;
-  previousStat: string;
-  change: string;
-  changeType: 'increase' | 'decrease';
-}
+import React, { useState, useEffect } from 'react';
+import { getDashboardData, getRecentActivities, StatsItem, ActivityItem } from '../services/dashboardService';
 
 const DashboardPage = () => {
   const [stats, setStats] = useState<StatsItem[]>([]);
+  const [activities, setActivities] = useState<ActivityItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // 模拟从API获取数据
-    setTimeout(() => {
-      setStats([
-        {
-          name: '活跃用户',
-          stat: '1,248',
-          previousStat: '1,103',
-          change: '12%',
-          changeType: 'increase',
-        },
-        {
-          name: '今日登录',
-          stat: '342',
-          previousStat: '294',
-          change: '16%',
-          changeType: 'increase',
-        },
-        {
-          name: '集成应用',
-          stat: '24',
-          previousStat: '22',
-          change: '9%',
-          changeType: 'increase',
-        },
-        {
-          name: '失败登录尝试',
-          stat: '18',
-          previousStat: '29',
-          change: '38%',
-          changeType: 'decrease',
-        }
-      ]);
-      setIsLoading(false);
-    }, 1000);
+    loadDashboardData();
   }, []);
+
+  const loadDashboardData = async () => {
+    try {
+      setIsLoading(true);
+      const dashboardData = await getDashboardData();
+      setStats(dashboardData.stats);
+      setActivities(dashboardData.activities);
+    } catch (error) {
+      console.error('Failed to load dashboard data:', error);
+      // 可以在这里添加错误提示
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const formatActivityTime = (timestamp: string) => {
+    const date = new Date(timestamp);
+    const now = new Date();
+    const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
+    
+    if (diffInMinutes < 60) {
+      return `${diffInMinutes} 分钟前`;
+    } else if (diffInMinutes < 1440) {
+      return `${Math.floor(diffInMinutes / 60)} 小时前`;
+    } else {
+      return `${Math.floor(diffInMinutes / 1440)} 天前`;
+    }
+  };
+
+  const getActivityStatusClass = (status: string) => {
+    switch (status) {
+      case 'success':
+        return 'bg-green-100 text-green-800';
+      case 'failed':
+        return 'bg-red-100 text-red-800';
+      case 'warning':
+        return 'bg-yellow-100 text-yellow-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getActivityStatusText = (status: string) => {
+    switch (status) {
+      case 'success':
+        return '成功';
+      case 'failed':
+        return '失败';
+      case 'warning':
+        return '警告';
+      default:
+        return status;
+    }
+  };
 
   if (isLoading) {
     return (
@@ -101,34 +116,45 @@ const DashboardPage = () => {
       {/* 最近活动 */}
       <h2 className="mt-8 text-lg font-medium text-gray-900">最近活动</h2>
       <div className="mt-2 bg-white shadow overflow-hidden sm:rounded-md">
-        <ul className="divide-y divide-gray-200">
-          {[1, 2, 3, 4, 5].map((item) => (
-            <li key={item}>
-              <div className="px-4 py-4 sm:px-6">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-blue-600 truncate">用户登录</p>
-                  <div className="ml-2 flex-shrink-0 flex">
-                    <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                      成功
-                    </p>
+        {activities.length > 0 ? (
+          <ul className="divide-y divide-gray-200">
+            {activities.map((activity) => (
+              <li key={activity.id}>
+                <div className="px-4 py-4 sm:px-6">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-medium text-blue-600 truncate">{activity.type}</p>
+                    <div className="ml-2 flex-shrink-0 flex">
+                      <p className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getActivityStatusClass(activity.status)}`}>
+                        {getActivityStatusText(activity.status)}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-2 sm:flex sm:justify-between">
+                    <div className="sm:flex">
+                      <p className="flex items-center text-sm text-gray-500">
+                        {activity.user}
+                      </p>
+                      {activity.details && (
+                        <p className="mt-2 flex items-center text-xs text-gray-400 sm:mt-0 sm:ml-6">
+                          {activity.details}
+                        </p>
+                      )}
+                    </div>
+                    <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                      <p>
+                        {formatActivityTime(activity.timestamp)}
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="mt-2 sm:flex sm:justify-between">
-                  <div className="sm:flex">
-                    <p className="flex items-center text-sm text-gray-500">
-                      user{item}@example.com
-                    </p>
-                  </div>
-                  <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                    <p>
-                      {Math.floor(Math.random() * 60)} 分钟前
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="px-4 py-8 text-center text-gray-500">
+            暂无活动记录
+          </div>
+        )}
       </div>
     </div>
   );
