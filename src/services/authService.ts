@@ -26,7 +26,7 @@ export interface UserData {
 
 const login = async (username: string, password: string): Promise<UserData> => {
   try {
-    const response = await apiClient.post('/api/auth/login', { email: username, password });
+    const response = await apiClient.post('/auth/login', { email: username, password });
     return response.data.user;
   } catch (error: any) {
     if (error.response) {
@@ -38,7 +38,7 @@ const login = async (username: string, password: string): Promise<UserData> => {
 
 const logout = async (): Promise<void> => {
   try {
-    await apiClient.post('/api/auth/logout', {});
+    await apiClient.post('/auth/logout', {});
   } catch (error) {
     console.error('登出时出错', error);
     throw error;
@@ -47,7 +47,7 @@ const logout = async (): Promise<void> => {
 
 const getCurrentUser = async (): Promise<UserData | null> => {
   try {
-    const response = await apiClient.get('/api/auth/user');
+    const response = await apiClient.get('/auth/user');
     return response.data.user;
   } catch (error) {
     console.error('获取当前用户信息失败', error);
@@ -58,7 +58,7 @@ const getCurrentUser = async (): Promise<UserData | null> => {
 // 添加刷新token的方法
 const refreshToken = async (): Promise<boolean> => {
   try {
-    await apiClient.post('/api/auth/refresh');
+    await apiClient.post('/auth/refresh');
     return true;
   } catch (error) {
     console.error('刷新token失败', error);
