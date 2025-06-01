@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export interface User {
   id: string;
   name: string;
@@ -23,113 +25,85 @@ export interface UpdateUserRequest {
   status?: 'active' | 'inactive' | 'locked';
 }
 
-const API_BASE_URL = 'http://localhost:8787';
+// 创建axios实例
+const apiClient = axios.create({
+  baseURL: '/api',
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 export const getUsers = async (): Promise<User[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/users`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const response = await apiClient.get('/users');
+    if (response.data.success) {
+      return response.data.users || [];
     }
-
-    const data = await response.json();
-    return data.users || [];
-  } catch (error) {
-    console.error('Error fetching users:', error);
-    throw error;
+    throw new Error(response.data.message || '获取用户列表失败');
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(error.response.data.message || '获取用户列表失败');
+    }
+    throw new Error('无法连接到服务器');
   }
 };
 
 export const createUser = async (userData: CreateUserRequest): Promise<User> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/users`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      },
-      body: JSON.stringify(userData),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const response = await apiClient.post('/users', userData);
+    if (response.data.success) {
+      return response.data.user;
     }
-
-    const data = await response.json();
-    return data.user;
-  } catch (error) {
-    console.error('Error creating user:', error);
-    throw error;
+    throw new Error(response.data.message || '创建用户失败');
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(error.response.data.message || '创建用户失败');
+    }
+    throw new Error('无法连接到服务器');
   }
 };
 
 export const updateUser = async (userId: string, userData: UpdateUserRequest): Promise<User> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/users/${userId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      },
-      body: JSON.stringify(userData),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const response = await apiClient.put(`/users/${userId}`, userData);
+    if (response.data.success) {
+      return response.data.user;
     }
-
-    const data = await response.json();
-    return data.user;
-  } catch (error) {
-    console.error('Error updating user:', error);
-    throw error;
+    throw new Error(response.data.message || '更新用户失败');
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(error.response.data.message || '更新用户失败');
+    }
+    throw new Error('无法连接到服务器');
   }
 };
 
 export const deleteUser = async (userId: string): Promise<void> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/users/${userId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const response = await apiClient.delete(`/users/${userId}`);
+    if (!response.data.success) {
+      throw new Error(response.data.message || '删除用户失败');
     }
-  } catch (error) {
-    console.error('Error deleting user:', error);
-    throw error;
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(error.response.data.message || '删除用户失败');
+    }
+    throw new Error('无法连接到服务器');
   }
 };
 
 export const getUserById = async (userId: string): Promise<User> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/users/${userId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const response = await apiClient.get(`/users/${userId}`);
+    if (response.data.success) {
+      return response.data.user;
     }
-
-    const data = await response.json();
-    return data.user;
-  } catch (error) {
-    console.error('Error fetching user:', error);
-    throw error;
+    throw new Error(response.data.message || '获取用户详情失败');
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(error.response.data.message || '获取用户详情失败');
+    }
+    throw new Error('无法连接到服务器');
   }
 };

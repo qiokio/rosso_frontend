@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export interface StatsItem {
   name: string;
   stat: string;
@@ -20,49 +22,42 @@ export interface DashboardData {
   activities: ActivityItem[];
 }
 
-const API_BASE_URL = 'http://localhost:8787';
+// 创建axios实例
+const apiClient = axios.create({
+  baseURL: '/api',
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 export const getDashboardStats = async (): Promise<StatsItem[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/dashboard/stats`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const response = await apiClient.get('/dashboard/stats');
+    if (response.data.success) {
+      return response.data.stats || [];
     }
-
-    const data = await response.json();
-    return data.stats || [];
-  } catch (error) {
-    console.error('Error fetching dashboard stats:', error);
-    throw error;
+    throw new Error(response.data.message || '获取仪表盘统计数据失败');
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(error.response.data.message || '获取仪表盘统计数据失败');
+    }
+    throw new Error('无法连接到服务器');
   }
 };
 
 export const getRecentActivities = async (limit: number = 10): Promise<ActivityItem[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/dashboard/activities?limit=${limit}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const response = await apiClient.get(`/dashboard/activities?limit=${limit}`);
+    if (response.data.success) {
+      return response.data.activities || [];
     }
-
-    const data = await response.json();
-    return data.activities || [];
-  } catch (error) {
-    console.error('Error fetching recent activities:', error);
-    throw error;
+    throw new Error(response.data.message || '获取最近活动数据失败');
+  } catch (error: any) {
+    if (error.response) {
+      throw new Error(error.response.data.message || '获取最近活动数据失败');
+    }
+    throw new Error('无法连接到服务器');
   }
 };
 
@@ -78,7 +73,7 @@ export const getDashboardData = async (): Promise<DashboardData> => {
       activities
     };
   } catch (error) {
-    console.error('Error fetching dashboard data:', error);
+    console.error('获取仪表盘数据失败:', error);
     throw error;
   }
 };

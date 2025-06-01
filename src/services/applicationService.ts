@@ -1,11 +1,8 @@
 import axios from 'axios';
 
-// 根据环境确定API URL
-const API_URL = '/api';
-
 // 创建axios实例
 const apiClient = axios.create({
-  baseURL: API_URL,
+  baseURL: '/api',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
