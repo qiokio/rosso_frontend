@@ -16,12 +16,12 @@ const ApplicationsPage = () => {
   const [showAddModal, setShowAddModal] = useState(false);
 
   useEffect(() => {
-    // u6a21u62dfu4eceAPIu83b7u53d6u6570u636e
+    // 模拟从API获取数据
     setTimeout(() => {
       setApplications([
         {
           id: '1',
-          name: 'u516cu53f8u95e8u6237',
+          name: '公司门户',
           type: 'saml',
           url: 'https://portal.example.com',
           status: 'active',
@@ -29,7 +29,7 @@ const ApplicationsPage = () => {
         },
         {
           id: '2',
-          name: 'u5de5u5355u7cfbu7edf',
+          name: '工单系统',
           type: 'oidc',
           url: 'https://tickets.example.com',
           status: 'active',
@@ -37,7 +37,7 @@ const ApplicationsPage = () => {
         },
         {
           id: '3',
-          name: 'CRMu7cfbu7edf',
+          name: 'CRM系统',
           type: 'saml',
           url: 'https://crm.example.com',
           status: 'active',
@@ -45,7 +45,7 @@ const ApplicationsPage = () => {
         },
         {
           id: '4',
-          name: 'u6587u6863u7ba1u7406',
+          name: '文档管理',
           type: 'oidc',
           url: 'https://docs.example.com',
           status: 'inactive',
@@ -76,14 +76,14 @@ const ApplicationsPage = () => {
   return (
     <div className="py-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-gray-900">u5e94u7528u7a0bu5e8fu7ba1u7406</h1>
+        <h1 className="text-2xl font-semibold text-gray-900">应用程序管理</h1>
         <button
           type="button"
           onClick={handleAddApplication}
           className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
           <PlusIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-          u6dfbu52a0u5e94u7528
+          添加应用
         </button>
       </div>
 
@@ -104,7 +104,7 @@ const ApplicationsPage = () => {
                   </div>
                   <div className="flex items-center">
                     <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${app.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
-                      {app.status === 'active' ? 'u6d3bu8dc3' : 'u505cu7528'}
+                      {app.status === 'active' ? '活跃' : '停用'}
                     </span>
                     <div className="ml-4 flex-shrink-0 flex">
                       <button
@@ -112,14 +112,14 @@ const ApplicationsPage = () => {
                         className="mr-2 inline-flex items-center px-3 py-1.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       >
                         <PencilSquareIcon className="-ml-1 mr-1 h-4 w-4" aria-hidden="true" />
-                        u7f16u8f91
+                        编辑
                       </button>
                       <button
                         type="button"
                         className="inline-flex items-center px-3 py-1.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       >
                         <TrashIcon className="-ml-1 mr-1 h-4 w-4 text-red-500" aria-hidden="true" />
-                        u5220u9664
+                        删除
                       </button>
                     </div>
                   </div>
@@ -127,7 +127,7 @@ const ApplicationsPage = () => {
                 <div className="mt-2 sm:flex sm:justify-between">
                   <div className="sm:flex">
                     <p className="flex items-center text-sm text-gray-500">
-                      u521bu5efau4e8e: {formatDate(app.createdAt)}
+                      创建于: {formatDate(app.createdAt)}
                     </p>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ const ApplicationsPage = () => {
         </ul>
       </div>
 
-      {/* u6dfbu52a0u5e94u7528u6a21u6001u6846 */}
+      {/* 添加应用模态框 */}
       {showAddModal && (
         <div className="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -149,14 +149,14 @@ const ApplicationsPage = () => {
               <div>
                 <div className="mt-3 text-center sm:mt-5">
                   <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-                    u6dfbu52a0u65b0u5e94u7528
+                    添加新应用
                   </h3>
                   <div className="mt-2">
                     <form className="space-y-4">
                       <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                         <div className="sm:col-span-6">
                           <label htmlFor="app-name" className="block text-sm font-medium text-gray-700">
-                            u5e94u7528u540du79f0
+                            应用名称
                           </label>
                           <div className="mt-1">
                             <input
@@ -170,7 +170,7 @@ const ApplicationsPage = () => {
 
                         <div className="sm:col-span-6">
                           <label htmlFor="app-url" className="block text-sm font-medium text-gray-700">
-                            u5e94u7528URL
+                            应用URL
                           </label>
                           <div className="mt-1">
                             <input
@@ -184,7 +184,7 @@ const ApplicationsPage = () => {
 
                         <div className="sm:col-span-6">
                           <label htmlFor="app-type" className="block text-sm font-medium text-gray-700">
-                            u534fu8baeu7c7bu578b
+                            协议类型
                           </label>
                           <div className="mt-1">
                             <select
@@ -208,14 +208,14 @@ const ApplicationsPage = () => {
                   className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:col-start-2 sm:text-sm"
                   onClick={() => setShowAddModal(false)}
                 >
-                  u6dfbu52a0
+                  添加
                 </button>
                 <button
                   type="button"
                   className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:col-start-1 sm:text-sm"
                   onClick={() => setShowAddModal(false)}
                 >
-                  u53d6u6d88
+                  取消
                 </button>
               </div>
             </div>
@@ -227,3 +227,39 @@ const ApplicationsPage = () => {
 };
 
 export default ApplicationsPage;
+
+// 模拟数据
+const mockApplications = [
+  {
+    id: '1',
+    name: '公司门户',
+    url: 'https://portal.example.com',
+    protocol: 'saml',
+    status: 'active',
+    createdAt: '2023-06-15T10:30:00Z'
+  },
+  {
+    id: '2',
+    name: '工单系统',
+    url: 'https://tickets.example.com',
+    protocol: 'oidc',
+    status: 'active',
+    createdAt: '2023-06-10T08:15:00Z'
+  },
+  {
+    id: '3',
+    name: 'CRM系统',
+    url: 'https://crm.example.com',
+    protocol: 'saml',
+    status: 'inactive',
+    createdAt: '2023-05-20T14:45:00Z'
+  },
+  {
+    id: '4',
+    name: '文档管理',
+    url: 'https://docs.example.com',
+    protocol: 'oidc',
+    status: 'active',
+    createdAt: '2023-04-05T09:20:00Z'
+  }
+];

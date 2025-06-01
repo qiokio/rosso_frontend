@@ -5,7 +5,7 @@ const SettingsPage = () => {
 
   return (
     <div className="py-6">
-      <h1 className="text-2xl font-semibold text-gray-900">u7cfbu7edfu8bbeu7f6e</h1>
+      <h1 className="text-2xl font-semibold text-gray-900">系统设置</h1>
 
       <div className="mt-6">
         <div className="border-b border-gray-200">
@@ -14,25 +14,25 @@ const SettingsPage = () => {
               onClick={() => setActiveTab('general')}
               className={`${activeTab === 'general' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
             >
-              u57fau672cu8bbeu7f6e
+              基本设置
             </button>
             <button
               onClick={() => setActiveTab('security')}
               className={`${activeTab === 'security' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
             >
-              u5b89u5168u8bbeu7f6e
+              安全设置
             </button>
             <button
               onClick={() => setActiveTab('authentication')}
               className={`${activeTab === 'authentication' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
             >
-              u8ba4u8bc1u8bbeu7f6e
+              认证设置
             </button>
             <button
               onClick={() => setActiveTab('appearance')}
               className={`${activeTab === 'appearance' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
             >
-              u5916u89c2u8bbeu7f6e
+              外观设置
             </button>
           </nav>
         </div>
@@ -43,9 +43,9 @@ const SettingsPage = () => {
               <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                   <div className="md:col-span-1">
-                    <h3 className="text-lg font-medium leading-6 text-gray-900">u57fau672cu4fe1u606f</h3>
+                    <h3 className="text-lg font-medium leading-6 text-gray-900">基本信息</h3>
                     <p className="mt-1 text-sm text-gray-500">
-                      u8fd9u4e9bu4fe1u606fu5c06u663eu793au5728u60a8u7684u516cu5f00u8d44u6599u4e2d
+                      这些信息将显示在您的公开资料中
                     </p>
                   </div>
                   <div className="mt-5 md:mt-0 md:col-span-2">
@@ -53,20 +53,20 @@ const SettingsPage = () => {
                       <div className="grid grid-cols-6 gap-6">
                         <div className="col-span-6 sm:col-span-4">
                           <label htmlFor="company-name" className="block text-sm font-medium text-gray-700">
-                            u516cu53f8u540du79f0
+                            公司名称
                           </label>
                           <input
                             type="text"
                             name="company-name"
                             id="company-name"
-                            defaultValue="u793au4f8bu516cu53f8"
+                            defaultValue="示例公司"
                             className="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
 
                         <div className="col-span-6 sm:col-span-4">
                           <label htmlFor="site-url" className="block text-sm font-medium text-gray-700">
-                            u7f51u7ad9URL
+                            网站URL
                           </label>
                           <input
                             type="text"
@@ -80,7 +80,7 @@ const SettingsPage = () => {
 
                       <div>
                         <label htmlFor="about" className="block text-sm font-medium text-gray-700">
-                          u516cu53f8u7b80u4ecb
+                          公司简介
                         </label>
                         <div className="mt-1">
                           <textarea
@@ -92,7 +92,7 @@ const SettingsPage = () => {
                           />
                         </div>
                         <p className="mt-2 text-sm text-gray-500">
-                          u7b80u77edu4ecbu7ec8u60a8u7684u516cu53f8
+                          简短介绍您的公司
                         </p>
                       </div>
 
@@ -101,7 +101,81 @@ const SettingsPage = () => {
                           type="submit"
                           className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         >
-                          u4fddu5b58
+                          保存
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+                <div className="md:grid md:grid-cols-3 md:gap-6">
+                  <div className="md:col-span-1">
+                    <h3 className="text-lg font-medium leading-6 text-gray-900">通知设置</h3>
+                    <p className="mt-1 text-sm text-gray-500">决定您想如何接收通知</p>
+                  </div>
+                  <div className="mt-5 md:mt-0 md:col-span-2">
+                    <form className="space-y-6">
+                      <fieldset>
+                        <legend className="text-base font-medium text-gray-900">电子邮件通知</legend>
+                        <div className="mt-4 space-y-4">
+                          <div className="flex items-start">
+                            <div className="flex items-center h-5">
+                              <input
+                                id="comments"
+                                name="comments"
+                                type="checkbox"
+                                className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
+                              />
+                            </div>
+                            <div className="ml-3 text-sm">
+                              <label htmlFor="comments" className="font-medium text-gray-700">
+                                新用户注册
+                              </label>
+                              <p className="text-gray-500">当有新用户注册时收到通知</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start">
+                            <div className="flex items-center h-5">
+                              <input
+                                id="candidates"
+                                name="candidates"
+                                type="checkbox"
+                                className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
+                              />
+                            </div>
+                            <div className="ml-3 text-sm">
+                              <label htmlFor="candidates" className="font-medium text-gray-700">
+                                登录尝试
+                              </label>
+                              <p className="text-gray-500">当有可疑的登录尝试时收到通知</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start">
+                            <div className="flex items-center h-5">
+                              <input
+                                id="offers"
+                                name="offers"
+                                type="checkbox"
+                                className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
+                              />
+                            </div>
+                            <div className="ml-3 text-sm">
+                              <label htmlFor="offers" className="font-medium text-gray-700">
+                                系统更新
+                              </label>
+                              <p className="text-gray-500">当系统有更新时收到通知</p>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                      <div className="flex justify-end">
+                        <button
+                          type="submit"
+                          className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                        >
+                          保存
                         </button>
                       </div>
                     </form>
@@ -111,335 +185,253 @@ const SettingsPage = () => {
             </div>
           )}
 
+          {/* 其他标签页内容 */}
           {activeTab === 'security' && (
-            <div>
-              <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
-                <div className="md:grid md:grid-cols-3 md:gap-6">
-                  <div className="md:col-span-1">
-                    <h3 className="text-lg font-medium leading-6 text-gray-900">u5bc6u7801u7b56u7565</h3>
-                    <p className="mt-1 text-sm text-gray-500">
-                      u8bbeu7f6eu5bc6u7801u5f3au5ea6u548cu8fc7u671fu7b56u7565
-                    </p>
+            <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+              <h3 className="text-lg font-medium leading-6 text-gray-900 mb-4">安全设置</h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-md font-medium text-gray-900">修改密码</h4>
+                  <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-4">
+                    <div className="sm:col-span-4">
+                      <label htmlFor="current-password" className="block text-sm font-medium text-gray-700">
+                        当前密码
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="password"
+                          name="current-password"
+                          id="current-password"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-4">
+                      <label htmlFor="new-password" className="block text-sm font-medium text-gray-700">
+                        新密码
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="password"
+                          name="new-password"
+                          id="new-password"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-4">
+                      <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700">
+                        确认新密码
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="password"
+                          name="confirm-password"
+                          id="confirm-password"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-5 md:mt-0 md:col-span-2">
-                    <form className="space-y-6">
-                      <div>
-                        <label className="text-base font-medium text-gray-900">u5bc6u7801u5f3au5ea6u8981u6c42</label>
-                        <p className="text-sm leading-5 text-gray-500">u9009u62e9u5bc6u7801u5fc5u987bu5b8cu6210u7684u8981u6c42</p>
-                        <fieldset className="mt-4">
-                          <legend className="sr-only">u5bc6u7801u7b56u7565</legend>
-                          <div className="space-y-4">
-                            <div className="flex items-start">
-                              <div className="flex items-center h-5">
-                                <input
-                                  id="min-length"
-                                  name="min-length"
-                                  type="checkbox"
-                                  defaultChecked
-                                  className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                />
-                              </div>
-                              <div className="ml-3 text-sm">
-                                <label htmlFor="min-length" className="font-medium text-gray-700">
-                                  u81f3u5c118u4e2au5b57u7b26
-                                </label>
-                              </div>
-                            </div>
-                            <div className="flex items-start">
-                              <div className="flex items-center h-5">
-                                <input
-                                  id="uppercase"
-                                  name="uppercase"
-                                  type="checkbox"
-                                  defaultChecked
-                                  className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                />
-                              </div>
-                              <div className="ml-3 text-sm">
-                                <label htmlFor="uppercase" className="font-medium text-gray-700">
-                                  u81f3u5c11u5305u542bu4e00u4e2au5927u5199u5b57u6bcd
-                                </label>
-                              </div>
-                            </div>
-                            <div className="flex items-start">
-                              <div className="flex items-center h-5">
-                                <input
-                                  id="lowercase"
-                                  name="lowercase"
-                                  type="checkbox"
-                                  defaultChecked
-                                  className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                />
-                              </div>
-                              <div className="ml-3 text-sm">
-                                <label htmlFor="lowercase" className="font-medium text-gray-700">
-                                  u81f3u5c11u5305u542bu4e00u4e2au5c0fu5199u5b57u6bcd
-                                </label>
-                              </div>
-                            </div>
-                            <div className="flex items-start">
-                              <div className="flex items-center h-5">
-                                <input
-                                  id="numbers"
-                                  name="numbers"
-                                  type="checkbox"
-                                  defaultChecked
-                                  className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                />
-                              </div>
-                              <div className="ml-3 text-sm">
-                                <label htmlFor="numbers" className="font-medium text-gray-700">
-                                  u81f3u5c11u5305u542bu4e00u4e2au6570u5b57
-                                </label>
-                              </div>
-                            </div>
-                            <div className="flex items-start">
-                              <div className="flex items-center h-5">
-                                <input
-                                  id="special-char"
-                                  name="special-char"
-                                  type="checkbox"
-                                  defaultChecked
-                                  className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                />
-                              </div>
-                              <div className="ml-3 text-sm">
-                                <label htmlFor="special-char" className="font-medium text-gray-700">
-                                  u81f3u5c11u5305u542bu4e00u4e2au7279u6b8au5b57u7b26
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-                      </div>
+                </div>
 
+                <div>
+                  <h4 className="text-md font-medium text-gray-900">双因素认证</h4>
+                  <div className="mt-4">
+                    <div className="flex items-center justify-between">
                       <div>
-                        <label htmlFor="password-expiry" className="block text-sm font-medium text-gray-700">
-                          u5bc6u7801u8fc7u671fu5929u6570
-                        </label>
-                        <select
-                          id="password-expiry"
-                          name="password-expiry"
-                          className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-                          defaultValue="90"
-                        >
-                          <option value="30">30u5929</option>
-                          <option value="60">60u5929</option>
-                          <option value="90">90u5929</option>
-                          <option value="180">180u5929</option>
-                          <option value="never">u4eeu4e0du8fc7u671f</option>
-                        </select>
+                        <p className="text-sm text-gray-500">
+                          启用双因素认证可以增加您账户的安全性
+                        </p>
                       </div>
-
-                      <div className="flex justify-end">
+                      <div className="ml-4 flex-shrink-0">
                         <button
-                          type="submit"
-                          className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                          type="button"
+                          className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         >
-                          u4fddu5b58
+                          启用
                         </button>
                       </div>
-                    </form>
+                    </div>
                   </div>
+                </div>
+
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  >
+                    保存更改
+                  </button>
                 </div>
               </div>
             </div>
           )}
 
           {activeTab === 'authentication' && (
-            <div>
-              <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
-                <div className="md:grid md:grid-cols-3 md:gap-6">
-                  <div className="md:col-span-1">
-                    <h3 className="text-lg font-medium leading-6 text-gray-900">u591au56e0u7d20u8ba4u8bc1</h3>
-                    <p className="mt-1 text-sm text-gray-500">
-                      u6dfbu52a0u989du5916u7684u5b89u5168u5c42
-                    </p>
-                  </div>
-                  <div className="mt-5 md:mt-0 md:col-span-2">
-                    <form className="space-y-6">
-                      <div className="space-y-6">
-                        <div className="flex items-start">
-                          <div className="flex items-center h-5">
-                            <input
-                              id="enable-mfa"
-                              name="enable-mfa"
-                              type="checkbox"
-                              defaultChecked
-                              className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                            />
-                          </div>
-                          <div className="ml-3 text-sm">
-                            <label htmlFor="enable-mfa" className="font-medium text-gray-700">
-                              u5f3au5236u5f00u542fu591au56e0u7d20u8ba4u8bc1
-                            </label>
-                            <p className="text-gray-500">u6240u6709u7528u6237u5fc5u987bu8bbeu7f6eu5e76u4f7fu7528u591au56e0u7d20u8ba4u8bc1</p>
-                          </div>
-                        </div>
-
-                        <div>
-                          <label className="text-sm font-medium text-gray-700">u652fu6301u7684MFAu65b9u5f0f</label>
-                          <fieldset className="mt-4">
-                            <legend className="sr-only">MFAu65b9u5f0f</legend>
-                            <div className="space-y-4">
-                              <div className="flex items-start">
-                                <div className="flex items-center h-5">
-                                  <input
-                                    id="totp"
-                                    name="mfa-method"
-                                    type="checkbox"
-                                    defaultChecked
-                                    className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                  />
-                                </div>
-                                <div className="ml-3 text-sm">
-                                  <label htmlFor="totp" className="font-medium text-gray-700">
-                                    u65f6u95f4u57fau4e8eu4e00u6b21u6027u5bc6u7801(TOTP)
-                                  </label>
-                                  <p className="text-gray-500">u4f7fu7528Authenticatoru7c7bu5e94u7528u751fu6210u9a8cu8bc1u7801</p>
-                                </div>
-                              </div>
-                              <div className="flex items-start">
-                                <div className="flex items-center h-5">
-                                  <input
-                                    id="sms"
-                                    name="mfa-method"
-                                    type="checkbox"
-                                    className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                  />
-                                </div>
-                                <div className="ml-3 text-sm">
-                                  <label htmlFor="sms" className="font-medium text-gray-700">
-                                    SMSu9a8cu8bc1u7801
-                                  </label>
-                                  <p className="text-gray-500">u901au8fc7u77edu4fe1u53d1u9001u9a8cu8bc1u7801</p>
-                                </div>
-                              </div>
-                              <div className="flex items-start">
-                                <div className="flex items-center h-5">
-                                  <input
-                                    id="email"
-                                    name="mfa-method"
-                                    type="checkbox"
-                                    className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                  />
-                                </div>
-                                <div className="ml-3 text-sm">
-                                  <label htmlFor="email" className="font-medium text-gray-700">
-                                    u90aeu4ef6u9a8cu8bc1u7801
-                                  </label>
-                                  <p className="text-gray-500">u901au8fc7u90aeu4ef6u53d1u9001u9a8cu8bc1u7801</p>
-                                </div>
-                              </div>
-                              <div className="flex items-start">
-                                <div className="flex items-center h-5">
-                                  <input
-                                    id="webauthn"
-                                    name="mfa-method"
-                                    type="checkbox"
-                                    className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                  />
-                                </div>
-                                <div className="ml-3 text-sm">
-                                  <label htmlFor="webauthn" className="font-medium text-gray-700">
-                                    WebAuthn/FIDO2u5b89u5168u5bc6u94a5
-                                  </label>
-                                  <p className="text-gray-500">u4f7fu7528u6307u7eb9u8bc6u522bu3001u9762u90e8u8bc6u522bu6216u5b89u5168u5bc6u94a5</p>
-                                </div>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </div>
+            <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+              <h3 className="text-lg font-medium leading-6 text-gray-900 mb-4">认证设置</h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-md font-medium text-gray-900">会话设置</h4>
+                  <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-4">
+                    <div className="sm:col-span-4">
+                      <label htmlFor="session-timeout" className="block text-sm font-medium text-gray-700">
+                        会话超时（分钟）
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="number"
+                          name="session-timeout"
+                          id="session-timeout"
+                          defaultValue="30"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        />
                       </div>
-
-                      <div className="flex justify-end">
-                        <button
-                          type="submit"
-                          className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                        >
-                          u4fddu5b58
-                        </button>
-                      </div>
-                    </form>
+                      <p className="mt-2 text-sm text-gray-500">用户多长时间不活动后自动登出</p>
+                    </div>
                   </div>
+                </div>
+
+                <div>
+                  <h4 className="text-md font-medium text-gray-900">登录尝试限制</h4>
+                  <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-4">
+                    <div className="sm:col-span-4">
+                      <label htmlFor="max-attempts" className="block text-sm font-medium text-gray-700">
+                        最大尝试次数
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="number"
+                          name="max-attempts"
+                          id="max-attempts"
+                          defaultValue="5"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-4">
+                      <label htmlFor="lockout-time" className="block text-sm font-medium text-gray-700">
+                        锁定时间（分钟）
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="number"
+                          name="lockout-time"
+                          id="lockout-time"
+                          defaultValue="15"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  >
+                    保存设置
+                  </button>
                 </div>
               </div>
             </div>
           )}
 
           {activeTab === 'appearance' && (
-            <div>
-              <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
-                <div className="md:grid md:grid-cols-3 md:gap-6">
-                  <div className="md:col-span-1">
-                    <h3 className="text-lg font-medium leading-6 text-gray-900">u5916u89c2u8bbeu7f6e</h3>
-                    <p className="mt-1 text-sm text-gray-500">
-                      u81eau5b9au4e49u60a8u7684u767bu5f55u9875u9762u548cu95e8u6237
-                    </p>
-                  </div>
-                  <div className="mt-5 md:mt-0 md:col-span-2">
-                    <form className="space-y-6">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">u516cu53f8u6807u5fd7</label>
-                        <div className="mt-1 flex items-center">
-                          <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                            <svg className="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                          </span>
-                          <button
-                            type="button"
-                            className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                          >
-                            u66f4u6539
-                          </button>
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">u4e3bu9898u989cu8272</label>
-                        <div className="mt-1">
-                          <select
-                            id="theme-color"
-                            name="theme-color"
-                            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-                            defaultValue="blue"
-                          >
-                            <option value="blue">u84ddu8272</option>
-                            <option value="green">u7effu8272</option>
-                            <option value="red">u7ea2u8272</option>
-                            <option value="purple">u7d2bu8272</option>
-                            <option value="orange">u6a59u8272</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">u81eau5b9au4e49CSS</label>
-                        <div className="mt-1">
-                          <textarea
-                            id="custom-css"
-                            name="custom-css"
-                            rows={4}
-                            className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border border-gray-300 rounded-md"
-                            defaultValue=""
-                          />
-                        </div>
-                        <p className="mt-2 text-sm text-gray-500">
-                          u8fd9u5c06u5e94u7528u4e8eu767bu5f55u9875u9762u548cu95e8u6237
-                        </p>
-                      </div>
-
-                      <div className="flex justify-end">
+            <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+              <h3 className="text-lg font-medium leading-6 text-gray-900 mb-4">外观设置</h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-md font-medium text-gray-900">品牌设置</h4>
+                  <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-4">
+                    <div className="sm:col-span-6">
+                      <label htmlFor="logo" className="block text-sm font-medium text-gray-700">
+                        Logo
+                      </label>
+                      <div className="mt-1 flex items-center">
+                        <span className="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                          <svg className="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                          </svg>
+                        </span>
                         <button
-                          type="submit"
-                          className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                          type="button"
+                          className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         >
-                          u4fddu5b58
+                          更改
                         </button>
                       </div>
-                    </form>
+                    </div>
+
+                    <div className="sm:col-span-4">
+                      <label htmlFor="primary-color" className="block text-sm font-medium text-gray-700">
+                        主题色
+                      </label>
+                      <div className="mt-1">
+                        <input
+                          type="color"
+                          name="primary-color"
+                          id="primary-color"
+                          defaultValue="#3B82F6"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block sm:text-sm border-gray-300 rounded-md h-10 w-20"
+                        />
+                      </div>
+                    </div>
                   </div>
+                </div>
+
+                <div>
+                  <h4 className="text-md font-medium text-gray-900">登录页面自定义</h4>
+                  <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-4">
+                    <div className="sm:col-span-6">
+                      <label htmlFor="login-background" className="block text-sm font-medium text-gray-700">
+                        背景图片
+                      </label>
+                      <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <div className="space-y-1 text-center">
+                          <svg
+                            className="mx-auto h-12 w-12 text-gray-400"
+                            stroke="currentColor"
+                            fill="none"
+                            viewBox="0 0 48 48"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                              strokeWidth={2}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          <div className="flex text-sm text-gray-600">
+                            <label
+                              htmlFor="file-upload"
+                              className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
+                            >
+                              <span>上传文件</span>
+                              <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                            </label>
+                            <p className="pl-1">或拖放文件</p>
+                          </div>
+                          <p className="text-xs text-gray-500">PNG, JPG, GIF 最大 10MB</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  >
+                    保存设置
+                  </button>
                 </div>
               </div>
             </div>
