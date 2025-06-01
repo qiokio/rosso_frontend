@@ -18,9 +18,9 @@ const Navbar = () => {
               <Menu.Button className="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                 <span className="sr-only">u6253u5f00u7528u6237u83dcu5355</span>
                 <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
-                  {user?.username.slice(0, 1).toUpperCase()}
+                  {user?.name.slice(0, 1).toUpperCase()}
                 </div>
-                <span className="ml-2 text-gray-700">{user?.username}</span>
+                <span className="ml-2 text-gray-700">{user?.name}</span>
               </Menu.Button>
             </div>
             <Transition
