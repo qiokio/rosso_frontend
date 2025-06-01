@@ -4,7 +4,7 @@ import { authService } from '../services/authService';
 
 interface User {
   id: string;
-  username: string;
+  name: string;
   email: string;
   role: string;
 }

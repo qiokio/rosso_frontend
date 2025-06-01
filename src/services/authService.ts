@@ -19,7 +19,7 @@ export interface LoginCredentials {
 
 export interface UserData {
   id: string;
-  username: string;
+  name: string;
   email: string;
   role: string;
 }
