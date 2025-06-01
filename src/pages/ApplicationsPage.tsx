@@ -227,39 +227,3 @@ const ApplicationsPage = () => {
 };
 
 export default ApplicationsPage;
-
-// 模拟数据
-const mockApplications = [
-  {
-    id: '1',
-    name: '公司门户',
-    url: 'https://portal.example.com',
-    protocol: 'saml',
-    status: 'active',
-    createdAt: '2023-06-15T10:30:00Z'
-  },
-  {
-    id: '2',
-    name: '工单系统',
-    url: 'https://tickets.example.com',
-    protocol: 'oidc',
-    status: 'active',
-    createdAt: '2023-06-10T08:15:00Z'
-  },
-  {
-    id: '3',
-    name: 'CRM系统',
-    url: 'https://crm.example.com',
-    protocol: 'saml',
-    status: 'inactive',
-    createdAt: '2023-05-20T14:45:00Z'
-  },
-  {
-    id: '4',
-    name: '文档管理',
-    url: 'https://docs.example.com',
-    protocol: 'oidc',
-    status: 'active',
-    createdAt: '2023-04-05T09:20:00Z'
-  }
-];
