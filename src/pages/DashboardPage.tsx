@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { getDashboardData, getRecentActivities, StatsItem, ActivityItem } from '../services/dashboardService';
+import { useState, useEffect } from 'react';
+import { getDashboardData, StatsItem, ActivityItem } from '../services/dashboardService';
 
 const DashboardPage = () => {
   const [stats, setStats] = useState<StatsItem[]>([]);
